@@ -1,0 +1,154 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PeerGrade7</name>
+    </assembly>
+    <members>
+        <member name="T:PeerGrade7.Controllers.MessagesController">
+            <summary>
+            Контроллер сообщений.
+            </summary>
+        </member>
+        <member name="F:PeerGrade7.Controllers.MessagesController.messages">
+            <summary>
+            Список сообщений. Является временным хранилищем, а json-файл - основым.
+            </summary>
+        </member>
+        <member name="M:PeerGrade7.Controllers.MessagesController.#ctor">
+            <summary>
+            Конструктор без параментров.
+            Инициализирует список пользователей в зависимости от содержимого json-файла.
+            </summary>
+        </member>
+        <member name="M:PeerGrade7.Controllers.MessagesController.Get">
+            <summary>
+            Метод возвращает список сообщений(может быть пустым).
+            </summary>
+            <returns>Ок и список сообщений</returns>
+        </member>
+        <member name="M:PeerGrade7.Controllers.MessagesController.Post">
+            <summary>
+            Метод инициализирует список сообщений(в случае, если он пуст или не существует).
+            </summary>
+            <returns>Ок без параметров</returns>
+        </member>
+        <member name="M:PeerGrade7.Controllers.MessagesController.GetFrom(System.String)">
+            <summary>
+            Метод получается список сообщений, отправленных данным пользователем. 
+            </summary>
+            <param name="email">Идентификатор отправителя</param>
+            <returns>Ок, если сообщения есть, NotFound, если их нет</returns>
+        </member>
+        <member name="M:PeerGrade7.Controllers.MessagesController.GetTo(System.String)">
+            <summary>
+            Метод получает список сообщений, полученных данным пользователем.
+            </summary>
+            <param name="email">Идентификатор получателя</param>
+            <returns>Ок, если сообщения есть, NotFound, если их нет</returns>
+        </member>
+        <member name="M:PeerGrade7.Controllers.MessagesController.GetFromTo(System.String,System.String)">
+            <summary>
+            Метод получает список всех писем по отправителю и получателю.
+            </summary>
+            <param name="senderEmail">Идентификатор отправителя</param>
+            <param name="recieverEmail">Идентификатор получателя</param>
+            <returns>Ок, если сообщения есть, NotFound, если их нет</returns>
+        </member>
+        <member name="M:PeerGrade7.Controllers.MessagesController.PostBody(PeerGrade7.Models.Messages)">
+            <summary>
+            Метод добавляет сообщение в базу.
+            </summary>
+            <param name="message">Сообщение</param>
+            <returns>Ок, если все хорошо, NotFound, если одного из идентификаторов нет в базе, и BadRequest в случае некорректного запроса</returns>
+        </member>
+        <member name="T:PeerGrade7.Controllers.UsersController">
+            <summary>
+            Контроллер пользователей.
+            </summary>
+        </member>
+        <member name="F:PeerGrade7.Controllers.UsersController.users">
+            <summary>
+            Список пользователей. Служит временным хранилищем, а json-файл - постоянным.
+            </summary>
+        </member>
+        <member name="M:PeerGrade7.Controllers.UsersController.#ctor">
+            <summary>
+            Конструктор без параметров. Производит инициализацию списка пользователей в зависимости от содержимого json-файла.
+            </summary>
+        </member>
+        <member name="M:PeerGrade7.Controllers.UsersController.Get">
+            <summary>
+            Метод получает список всех пользователей.
+            </summary>
+            <returns>Ок и список пользователей в качестве параметра</returns>
+        </member>
+        <member name="M:PeerGrade7.Controllers.UsersController.Get(System.Int32,System.Int32)">
+            <summary>
+            Метод получает список пользователей, ограниченный параметрами.
+            </summary>
+            <param name="limit">Сколько пользователей нужно взять</param>
+            <param name="offset">Сколько пользователей нужно пропустить</param>
+            <returns>Ок, если параматры корректны, иначе BadRequest</returns>
+        </member>
+        <member name="M:PeerGrade7.Controllers.UsersController.Post">
+            <summary>
+            Метод производит первичную инициализацию списка пользоватлей.
+            </summary>
+            <returns>ОК без параметров</returns>
+        </member>
+        <member name="M:PeerGrade7.Controllers.UsersController.Get(System.String)">
+            <summary>
+            Метод находит пользователя по уникальному идентификатору.
+            </summary>
+            <param name="email">Уникальный идентификатор</param>
+            <returns>ОК, если пользователь найдет, иначе NotFound</returns>
+        </member>
+        <member name="M:PeerGrade7.Controllers.UsersController.PostBody(PeerGrade7.Models.Users)">
+            <summary>
+            Метод добавляет пользователя в список.
+            </summary>
+            <param name="user">Пользователь</param>
+            <returns>Ок, если пользователь новый и корректный, иначе BadRequest</returns>
+        </member>
+        <member name="T:PeerGrade7.Models.Messages">
+            <summary>
+            Модель сообщений.
+            </summary>
+        </member>
+        <member name="P:PeerGrade7.Models.Messages.Subject">
+            <summary>
+            Тема сообщения.
+            </summary>
+        </member>
+        <member name="P:PeerGrade7.Models.Messages.Message">
+            <summary>
+            Текст сообщения.
+            </summary>
+        </member>
+        <member name="P:PeerGrade7.Models.Messages.SenderId">
+            <summary>
+            Уникальный идентификатор отправителя.
+            </summary>
+        </member>
+        <member name="P:PeerGrade7.Models.Messages.RecieverId">
+            <summary>
+            Уникальный идентификатор получателя.
+            </summary>
+        </member>
+        <member name="T:PeerGrade7.Models.Users">
+            <summary>
+            Модель пользователя.
+            </summary>
+        </member>
+        <member name="P:PeerGrade7.Models.Users.UserName">
+            <summary>
+            Имя пользователя.
+            </summary>
+        </member>
+        <member name="P:PeerGrade7.Models.Users.Email">
+            <summary>
+            Адрес электронной почты, уникальный идетификатор.
+            </summary>
+        </member>
+    </members>
+</doc>

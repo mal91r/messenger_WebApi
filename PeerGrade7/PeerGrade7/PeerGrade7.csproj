@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    
+  </PropertyGroup>
+
+	<PropertyGroup Condition=" '$(Configuration)' == Debug ">
+		<DocumentationFile>obj\Debug\net5.0\PeerGrade7.xml</DocumentationFile>
+	</PropertyGroup>
+	
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+</Project>
